@@ -1,5 +1,10 @@
 set -ux
 
+# Turn on community and testing repositories
+sed -i -e 's/^\(http:\/\/.*\)\/\(v.\..\)\/main$/&\
+\1\/\2\/community\
+\1\/edge\/testing/' /etc/apk/repositories
+
 apk update && apk upgrade
 
 source /etc/os-release
